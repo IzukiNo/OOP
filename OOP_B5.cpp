@@ -4,14 +4,28 @@ using namespace std;
 
 class Point
 {
-public:
+private:
     int x, y;
+
+public:
     Point(int x1, int y1) : x(x1), y(y1) {}
+    ~Point() {}
+    int getX() { return x; }
+    int getY() { return y; }
+    void set(int x1, int y1)
+    {
+        x = x1;
+        y = y1;
+    }
+    void print()
+    {
+        cout << "Point: (" << x << ", " << y << ")" << endl;
+    }
 };
 
-double doDai(const Point &p1, const Point &p2)
+double doDai(Point &p1, Point &p2)
 {
-    return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
+    return sqrt(pow(p1.getX() - p2.getX(), 2) + pow(p1.getY() - p2.getY(), 2));
 }
 
 class TamGiac
@@ -25,29 +39,26 @@ public:
     void print()
     {
         cout << "Tam giac:" << endl;
-        cout << "A: (" << A.x << ", " << A.y << ")" << endl;
-        cout << "B: (" << B.x << ", " << B.y << ")" << endl;
-        cout << "C: (" << C.x << ", " << C.y << ")" << endl;
+        cout << "A: (" << A.getX() << ", " << A.getY() << ")" << endl;
+        cout << "B: (" << B.getX() << ", " << B.getY() << ")" << endl;
+        cout << "C: (" << C.getX() << ", " << C.getY() << ")" << endl;
     }
 
     void set(int x1, int y1, int x2, int y2, int x3, int y3)
     {
-        A.x = x1;
-        A.y = y1;
-        B.x = x2;
-        B.y = y2;
-        C.x = x3;
-        C.y = y3;
+        A.set(x1, y1);
+        B.set(x2, y2);
+        C.set(x3, y3);
     }
 
     float chuVi()
     {
-        return sqrt((A.x - B.x) * (A.x - B.x) + (A.y - B.y) * (A.y - B.y)) + sqrt((A.x - C.x) * (A.x - C.x) + (A.y - C.y) * (A.y - C.y)) + sqrt((B.x - C.x) * (B.x - C.x) + (B.y - C.y) * (B.y - C.y));
+        return sqrt(pow(A.getX() - B.getX(), 2) + pow(A.getY() - B.getY(), 2)) + sqrt(pow(A.getX() - C.getX(), 2) + pow(A.getY() - C.getY(), 2)) + sqrt(pow(B.getX() - C.getX(), 2) + pow(B.getY() - C.getY(), 2));
     }
 
     float dienTich()
     {
-        return 0.5 * abs((A.x - C.x) * (B.y - C.y) - (B.x - C.x) * (A.y - C.y));
+        return 0.5 * abs((A.getX() - C.getX()) * (B.getY() - C.getY()) - (B.getX() - C.getX()) * (A.getY() - C.getY()));
     }
 
     int phanLoai()

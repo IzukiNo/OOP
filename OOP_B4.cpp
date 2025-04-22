@@ -4,9 +4,23 @@ using namespace std;
 
 class Point
 {
-public:
+private:
     int x, y;
+
+public:
     Point(int x1, int y1) : x(x1), y(y1) {}
+    ~Point() {}
+    int getX() { return x; }
+    int getY() { return y; }
+    void set(int x1, int y1)
+    {
+        x = x1;
+        y = y1;
+    }
+    void print()
+    {
+        cout << "Point: (" << x << ", " << y << ")" << endl;
+    }
 };
 
 class Line
@@ -19,28 +33,26 @@ public:
     ~Line() {}
     void set(int x1, int y1, int x2, int y2)
     {
-        A.x = x1;
-        A.y = y1;
-        B.x = x2;
-        B.y = y2;
+        A.set(x1, y1);
+        B.set(x2, y2);
     }
 
     float tinhDoDai()
     {
-        return sqrt((A.x - B.x) * (A.x - B.x) + (A.y - B.y) * (A.y - B.y));
+        return sqrt((A.getX() - B.getX()) * (A.getX() - B.getX()) + (A.getY() - B.getY()) * (A.getY() - B.getY()));
     }
 
     void print()
     {
         cout << "Line:" << endl;
-        cout << "A: (" << A.x << ", " << A.y << ")" << endl;
-        cout << "B: (" << B.x << ", " << B.y << ")" << endl;
+        cout << "A: (" << A.getX() << ", " << A.getY() << ")" << endl;
+        cout << "B: (" << B.getX() << ", " << B.getY() << ")" << endl;
     }
 
     void xuatPhuongTrinh()
     {
         cout << "Phuong trinh cua duong thang la: ";
-        cout << "y = " << (B.y - A.y) / (B.x - A.x) << "x + " << A.y - (B.y - A.y) / (B.x - A.x) * A.x << endl;
+        cout << "y = " << (B.getY() - A.getY()) / (B.getX() - A.getX()) << "x + " << A.getY() - (B.getY() - A.getY()) / (B.getX() - A.getX()) * A.getX() << endl;
     }
 };
 
