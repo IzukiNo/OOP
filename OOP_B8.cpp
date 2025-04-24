@@ -99,15 +99,20 @@ int main()
     cout << m << endl;
     cout << "So phan tu: " << m.getSize() << endl;
     cout << "Phan tu thu 2: " << m.getData(1) << endl;
+
     m.addData(10);
     m.addData(20);
+
     cout << "Mang sau khi them 2 phan tu: " << endl
          << m << endl;
 
     m.removeData(2);
+
     cout << "Mang sau khi xoa phan tu thu 3: " << endl
          << m << endl;
+
     m.sortData();
+    
     cout << "Mang sau khi sap xep: " << endl
          << m << endl;
     cout << "Phan tu nho nhat: " << m.findMin() << endl;
