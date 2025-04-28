@@ -38,8 +38,8 @@ class STACK : public MANG1C {
 
     void push(int n){
         if (isEmpty()) {
-            getSopt() = 0;
-            getData(getSopt()) = n;
+            getData(0) = n;
+            getSopt()= 1;
         } else if (getSopt() < 100) {
             getData(getSopt()) = n;
             getSopt()++;
